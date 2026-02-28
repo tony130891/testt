@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Playwrite+GB+J+Guides:ital@0;1&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.layout {
+display: grid;
+grid-template-rows: 1fr 2fr 2fr 2fr;
+grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
