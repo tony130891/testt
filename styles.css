@@ -54,12 +54,58 @@
 .main-content {
     grid-row: 2/3;
     background-color: brown;
-    display: flex;
-    justify-content: center;
-
+    display: grid;
+    grid-template-rows: 30px 1fr;
 }
 
 .library {
     padding: 10px;
+    grid-row: 1/2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+     align-items: center;     /* Centers vertically */
 }
 
+.card-container {
+    grid-row: 2/3;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 200px;
+    height: 128px;
+    margin: 5px;
+    background-color: beige;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-content {
+    font-size: 22px;
+}
+
+#Dialog {
+    width: 330px;
+    height: 230px;
+    position: fixed;   /* Positions relative to the viewport */
+    top: 50%;          
+    left: 50%;      
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    font-size: x-large;
+}
+
+input {
+    font-size: x-large;
+}
+
+input[type="number"] {
+    width: 75px;
+}
