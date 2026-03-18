@@ -34,6 +34,7 @@ function addBookToLibrary(book) {
     let divBtn = document.createElement('div');
     card.classList.add('card');
     cardContent.classList.add('card-content');
+    deleteBtn.classList.add('deleteBtn');
 
 
     titlePara.textContent = newBook.title;
@@ -41,7 +42,6 @@ function addBookToLibrary(book) {
     pagesPara.textContent = newBook.pages;    
     readBtn.textContent = 'TOFIX';
     deleteBtn.textContent = 'REMOVE';
-
 
     cardContainer.appendChild(card);
     card.appendChild(cardContent);
@@ -53,6 +53,12 @@ function addBookToLibrary(book) {
     readBtn.after(deleteBtn);
 
     divBtn.classList.add('divBtn');
+    // make the delete button work an event inside of here
+    deleteBtn.addEventListener('click', () => {
+      deleteBtn.parentElement.parentElement.parentElement.remove()
+    })
+
+    // make the deleter event, remove the object from the array.splice()
 
     return newBook;
 }
@@ -62,19 +68,20 @@ btn.addEventListener('click', () => {
   dialog.showModal();
 })
 
-
 submitBtn.addEventListener('click', (event) => {
   event.preventDefault();
   addBookToLibrary();
   dialog.close();
 })
 
-
 closeDialog.addEventListener('click', () => {
   formDialog.reset();
   dialog.close();
 })
 
-function removeBook() {
 
+
+function removeBook() {
+  // when clicking the button remove the div with the class card
+ 
 }
