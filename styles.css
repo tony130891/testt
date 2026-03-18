@@ -109,3 +109,8 @@ input {
 input[type="number"] {
     width: 75px;
 }
+
+.divBtn {
+    display: flex;
+    justify-content: space-around;
+}

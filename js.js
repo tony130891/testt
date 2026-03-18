@@ -25,18 +25,22 @@ function addBookToLibrary(book) {
     let titlePara = document.createElement('p');
     let authorPara = document.createElement('p');
     let pagesPara = document.createElement('p');
+    let readBtn = document.createElement('button');
+    let deleteBtn = document.createElement('button');
 
     // create a div with class card and then a child class card-content
     let card = document.createElement('div');
-    card.classList.add('card');
-
     let cardContent = document.createElement('div');
+    let divBtn = document.createElement('div');
+    card.classList.add('card');
     cardContent.classList.add('card-content');
 
 
     titlePara.textContent = newBook.title;
     authorPara.textContent = newBook.author;
-    pagesPara.textContent = newBook.pages;
+    pagesPara.textContent = newBook.pages;    
+    readBtn.textContent = 'TOFIX';
+    deleteBtn.textContent = 'REMOVE';
 
 
     cardContainer.appendChild(card);
@@ -44,6 +48,11 @@ function addBookToLibrary(book) {
     cardContent.appendChild(titlePara);
     cardContent.appendChild(authorPara);
     cardContent.appendChild(pagesPara);
+    cardContent.appendChild(divBtn)
+    divBtn.appendChild(readBtn);
+    readBtn.after(deleteBtn);
+
+    divBtn.classList.add('divBtn');
 
     return newBook;
 }
@@ -52,7 +61,6 @@ function addBookToLibrary(book) {
 btn.addEventListener('click', () => {
   dialog.showModal();
 })
-
 
 
 submitBtn.addEventListener('click', (event) => {
@@ -66,3 +74,7 @@ closeDialog.addEventListener('click', () => {
   formDialog.reset();
   dialog.close();
 })
+
+function removeBook() {
+
+}
