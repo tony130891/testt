@@ -3,6 +3,10 @@ const dialog = document.querySelector('#Dialog');
 const submitBtn = document.querySelector('#confirm-btn');
 const closeDialog = document.querySelector('#closeDialog');
 const formDialog = document.querySelector('#formDialog');
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const cardContainer = document.querySelector('.card-container');
 let library = [];
 
 function Books(title, author, pages, read, id) {
@@ -13,34 +17,52 @@ function Books(title, author, pages, read, id) {
   this.id = crypto.randomUUID(id);
 }
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(book) {
 
-    let newBook = new Books(title, author, pages, read);
+    let newBook = new Books(title.value, author.value, pages.value, read.checked);
+    library.push(newBook);
 
-    // make this loop create a div with all this data and then add the class card
- let loop = library.forEach((book) => {
- console.log(`  ${book.title}
-  ${book.author}
-  ${book.pages}
-  ${book.read}`)
-});
+    let titlePara = document.createElement('p');
+    let authorPara = document.createElement('p');
+    let pagesPara = document.createElement('p');
 
-    return library.push(newBook);
+    // create a div with class card and then a child class card-content
+    let card = document.createElement('div');
+    card.classList.add('card');
+
+    let cardContent = document.createElement('div');
+    cardContent.classList.add('card-content');
+
+
+    titlePara.textContent = newBook.title;
+    authorPara.textContent = newBook.author;
+    pagesPara.textContent = newBook.pages;
+
+
+    cardContainer.appendChild(card);
+    card.appendChild(cardContent);
+    cardContent.appendChild(titlePara);
+    cardContent.appendChild(authorPara);
+    cardContent.appendChild(pagesPara);
+
+    return newBook;
 }
 
-addBookToLibrary('the hobb', 'muself', 12, 'yes');
-addBookToLibrary('nhhgghgghh', 'dych', 5, 'yes');
 
 btn.addEventListener('click', () => {
   dialog.showModal();
 })
 
+
+
 submitBtn.addEventListener('click', (event) => {
-   event.preventDefault();
+  event.preventDefault();
+  addBookToLibrary();
+  dialog.close();
 })
+
 
 closeDialog.addEventListener('click', () => {
   formDialog.reset();
   dialog.close();
 })
-
