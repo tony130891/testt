@@ -53,12 +53,18 @@ function addBookToLibrary(book) {
     readBtn.after(deleteBtn);
 
     divBtn.classList.add('divBtn');
-    // make the delete button work an event inside of here
-    deleteBtn.addEventListener('click', () => {
+
+    //assign the attribute id to the card class
+    card.setAttribute('data-author', newBook.author)
+    let cardId = card.getAttribute("data-author");
+    // if the dataset equals the id attribute of the book, remove that object
+    deleteBtn.addEventListener('click', (e) => {
+      if (cardId === newBook.author) {
+        const index = library.findIndex(book => book.author === cardId)
+        library.splice(index, 1)
+      }
       deleteBtn.parentElement.parentElement.parentElement.remove()
     })
-
-    // make the deleter event, remove the object from the array.splice()
 
     return newBook;
 }
