@@ -7,6 +7,8 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const cardContainer = document.querySelector('.card-container');
+const checkbox = document.querySelector('#read');
+let ischecked = true;
 let library = [];
 
 function Books(title, author, pages, read, id) {
@@ -40,7 +42,6 @@ function addBookToLibrary(book) {
     titlePara.textContent = newBook.title;
     authorPara.textContent = newBook.author;
     pagesPara.textContent = newBook.pages;    
-    readBtn.textContent = 'TOFIX';
     deleteBtn.textContent = 'REMOVE';
 
     cardContainer.appendChild(card);
@@ -66,6 +67,32 @@ function addBookToLibrary(book) {
       deleteBtn.parentElement.parentElement.parentElement.remove()
     })
 
+    
+    //check the condition
+    if (checkbox.checked) {
+      readBtn.textContent = "READ";
+      readBtn.classList.add('read');
+    } else {
+      readBtn.textContent = "NOT READ";
+      readBtn.classList.add('noread');
+    }
+
+    //toggle btn    
+
+    readBtn.addEventListener('click', function() {
+      if (this.classList.contains('noread')) {
+        readBtn.classList.remove('noread');
+        readBtn.classList.add('read');
+        readBtn.textContent = "READ";
+        readBtn.style.backgroundColor = "aqua";
+      } else {
+        readBtn.classList.remove('read');
+        readBtn.classList.add('noread');
+        readBtn.textContent = "NOT READ";
+        readBtn.style.backgroundColor = "yellow";
+      }
+      })
+
     return newBook;
 }
 
@@ -84,10 +111,3 @@ closeDialog.addEventListener('click', () => {
   formDialog.reset();
   dialog.close();
 })
-
-
-
-function removeBook() {
-  // when clicking the button remove the div with the class card
- 
-}

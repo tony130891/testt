@@ -114,3 +114,11 @@ input[type="number"] {
     display: flex;
     justify-content: space-around;
 }
+
+.read {
+    background-color: aqua;
+}
+
+.noread {
+    background-color: yellow;
+}
